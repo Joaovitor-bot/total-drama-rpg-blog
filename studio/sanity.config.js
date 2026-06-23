@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'Total Drama RPG',
 
-  projectId: 'cd',
+  projectId: 'f5iwk3nd',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],
