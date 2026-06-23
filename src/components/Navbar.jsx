@@ -2,21 +2,20 @@ import { NavLink } from "react-router-dom";
 
 function Navbar() {
   return (
-    <header className="site-header">
-      <nav className="navbar container">
-        <NavLink to="/" className="brand" aria-label="Página inicial">
-          <span className="brand-mark">TD</span>
-          <span>
-            <strong>Total Drama RPG</strong>
-            <small>Season 1</small>
-          </span>
-        </NavLink>
+    <header className="navbar">
+      <NavLink to="/" className="brand">
+        <div className="brand-icon">TD</div>
 
-        <div className="nav-links" aria-label="Navegação principal">
-          <NavLink to="/">Início</NavLink>
-          <NavLink to="/participantes">Participantes</NavLink>
-          <NavLink to="/eliminados">Eliminados</NavLink>
+        <div>
+          <strong>Drama Total RPG</strong>
+          <span>1ª Temporada</span>
         </div>
+      </NavLink>
+
+      <nav className="nav-links">
+        <NavLink to="/">Início</NavLink>
+        <NavLink to="/participantes">Participantes</NavLink>
+        <NavLink to="/eliminados">Eliminados</NavLink>
       </nav>
     </header>
   );
