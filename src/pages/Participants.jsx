@@ -1,8 +1,29 @@
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { participantes } from "../data";
 
 function Participants() {
+  const [participanteAberto, setParticipanteAberto] = useState(null);
+
+  function fecharModal() {
+    setParticipanteAberto(null);
+  }
+
+  useEffect(() => {
+    function fecharComEsc(event) {
+      if (event.key === "Escape") {
+        fecharModal();
+      }
+    }
+
+    window.addEventListener("keydown", fecharComEsc);
+
+    return () => {
+      window.removeEventListener("keydown", fecharComEsc);
+    };
+  }, []);
+
   return (
     <>
       <Navbar />
@@ -17,7 +38,13 @@ function Participants() {
         <section className="cards-grid">
           {participantes.map((participante) => (
             <article className="full-card" key={participante.id}>
-              <img src={participante.imagem} alt={participante.nome} />
+              <button
+                className="participant-image-button"
+                onClick={() => setParticipanteAberto(participante)}
+                aria-label={`Abrir card de ${participante.nome}`}
+              >
+                <img src={participante.imagem} alt={participante.nome} />
+              </button>
 
               <div className="card-info">
                 <h2>{participante.nome}</h2>
@@ -28,6 +55,27 @@ function Participants() {
           ))}
         </section>
       </main>
+
+      {participanteAberto && (
+        <div className="image-modal" onClick={fecharModal}>
+          <button
+            className="modal-close"
+            onClick={fecharModal}
+            aria-label="Fechar imagem"
+          >
+            ×
+          </button>
+
+          <div className="modal-content" onClick={(event) => event.stopPropagation()}>
+            <img
+              src={participanteAberto.imagem}
+              alt={participanteAberto.nome}
+            />
+
+            <h2>{participanteAberto.nome}</h2>
+          </div>
+        </div>
+      )}
 
       <Footer />
     </>
