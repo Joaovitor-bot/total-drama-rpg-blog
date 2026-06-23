@@ -11,7 +11,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/participantes" element={<Participants />} />
         <Route path="/eliminados" element={<Eliminated />} />
-        <Route path="/post/:id" element={<Post />} />
+        <Route path="/post/:slug" element={<Post />} />
       </Routes>
     </BrowserRouter>
   );
