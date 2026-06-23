@@ -1043,3 +1043,59 @@ blockquote {
   font-weight: 800;
   text-decoration: underline;
 }
+
+.video-embed {
+  margin: 32px 0;
+}
+
+.video-embed iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.38);
+  background: #000;
+}
+
+.video-embed figcaption {
+  margin-top: 8px;
+  color: #ffd7bd;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.article-image {
+  margin: 28px 0;
+}
+
+.article-image img {
+  width: 100%;
+  border-radius: 22px;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.38);
+}
+
+.article-image figcaption {
+  margin-top: 8px;
+  color: #ffd7bd;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.article-heading {
+  margin: 30px 0 12px;
+  color: var(--yellow);
+  font-size: 2rem;
+}
+
+.article-subheading {
+  margin: 24px 0 10px;
+  color: #ffe7d1;
+  font-size: 1.45rem;
+}
+
+.article-body a {
+  color: var(--yellow);
+  font-weight: 800;
+  text-decoration: underline;
+}

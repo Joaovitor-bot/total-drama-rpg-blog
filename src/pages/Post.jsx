@@ -15,6 +15,85 @@ function formatDate(date) {
   });
 }
 
+function getYouTubeId(url) {
+  if (!url) return null;
+
+  try {
+    const parsedUrl = new URL(url);
+
+    if (parsedUrl.hostname.includes("youtu.be")) {
+      return parsedUrl.pathname.replace("/", "");
+    }
+
+    if (parsedUrl.pathname.includes("/shorts/")) {
+      return parsedUrl.pathname.split("/shorts/")[1]?.split("?")[0];
+    }
+
+    if (parsedUrl.pathname.includes("/embed/")) {
+      return parsedUrl.pathname.split("/embed/")[1]?.split("?")[0];
+    }
+
+    return parsedUrl.searchParams.get("v");
+  } catch {
+    return null;
+  }
+}
+
+const portableTextComponents = {
+  types: {
+    image: ({ value }) => {
+      if (!value?.asset?._ref) return null;
+
+      return (
+        <figure className="article-image">
+          <img
+            src={urlFor(value).width(1200).auto("format").url()}
+            alt={value.alt || "Imagem do post"}
+          />
+
+          {value.caption && <figcaption>{value.caption}</figcaption>}
+        </figure>
+      );
+    },
+
+    youtube: ({ value }) => {
+      const videoId = getYouTubeId(value.url);
+
+      if (!videoId) return null;
+
+      return (
+        <figure className="video-embed">
+          <iframe
+            src={`https://www.youtube.com/embed/${videoId}`}
+            title={value.title || "Vídeo do YouTube"}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+          ></iframe>
+
+          {value.title && <figcaption>{value.title}</figcaption>}
+        </figure>
+      );
+    },
+  },
+
+  block: {
+    h1: ({ children }) => <h1>{children}</h1>,
+    h2: ({ children }) => <h2 className="article-heading">{children}</h2>,
+    h3: ({ children }) => <h3 className="article-subheading">{children}</h3>,
+    blockquote: ({ children }) => <blockquote>{children}</blockquote>,
+  },
+
+  marks: {
+    link: ({ children, value }) => {
+      return (
+        <a href={value.href} target="_blank" rel="noreferrer">
+          {children}
+        </a>
+      );
+    },
+  },
+};
+
 function Post() {
   const { slug } = useParams();
 
@@ -58,6 +137,7 @@ function Post() {
             <div>❓</div>
             <h1>Post não encontrado</h1>
             <p>Esse post ainda não existe ou o endereço foi alterado.</p>
+
             <Link className="back-link" to="/">
               Voltar ao início
             </Link>
@@ -92,7 +172,10 @@ function Post() {
           <h1>{post.title}</h1>
 
           <div className="article-body">
-            <PortableText value={post.body} components={portableTextComponents} />
+            <PortableText
+              value={post.body}
+              components={portableTextComponents}
+            />
           </div>
         </article>
       </main>
@@ -101,39 +184,5 @@ function Post() {
     </>
   );
 }
-
-const portableTextComponents = {
-  types: {
-    image: ({ value }) => {
-      if (!value?.asset?._ref) return null;
-
-      return (
-        <figure className="article-image">
-          <img
-            src={urlFor(value).width(1200).auto("format").url()}
-            alt={value.alt || "Imagem do post"}
-          />
-
-          {value.caption && <figcaption>{value.caption}</figcaption>}
-        </figure>
-      );
-    },
-  },
-
-  block: {
-    h2: ({ children }) => <h2 className="article-heading">{children}</h2>,
-    h3: ({ children }) => <h3 className="article-subheading">{children}</h3>,
-  },
-
-  marks: {
-    link: ({ children, value }) => {
-      return (
-        <a href={value.href} target="_blank" rel="noreferrer">
-          {children}
-        </a>
-      );
-    },
-  },
-};
 
 export default Post;
