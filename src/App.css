@@ -1099,3 +1099,32 @@ blockquote {
   font-weight: 800;
   text-decoration: underline;
 }
+
+.comments-section {
+  margin-top: 34px;
+  padding: clamp(24px, 4vw, 42px);
+  border: 1px solid var(--border);
+  border-radius: 30px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 248, 232, 0.1),
+    rgba(255, 248, 232, 0.045)
+  );
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.comments-header {
+  margin-bottom: 24px;
+}
+
+.comments-header h2 {
+  margin-bottom: 8px;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  letter-spacing: -0.04em;
+}
+
+.comments-header p {
+  color: #ffd7bd;
+  line-height: 1.7;
+}

@@ -4,6 +4,7 @@ import { PortableText } from "@portabletext/react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { client, postBySlugQuery, urlFor } from "../sanity";
+import Comments from "../components/Comments";
 
 function formatDate(date) {
   if (!date) return "Sem data";
@@ -171,13 +172,15 @@ function Post() {
 
           <h1>{post.title}</h1>
 
-          <div className="article-body">
+                    <div className="article-body">
             <PortableText
               value={post.body}
               components={portableTextComponents}
             />
           </div>
         </article>
+
+        <Comments />
       </main>
 
       <Footer />
