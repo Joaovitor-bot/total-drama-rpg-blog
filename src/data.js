@@ -116,7 +116,7 @@ export const participantes = [
     id: 6,
     nome: "Elisângela",
     subtitulo: "Participante da temporada",
-    status: "Em jogo",
+    status: "Elimanado",
     imagem: "/elisangela.png"
   },
   {
