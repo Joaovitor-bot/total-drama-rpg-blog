@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { PortableText } from "@portabletext/react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { client, postBySlugQuery } from "../sanity";
+import { client, postBySlugQuery, urlFor } from "../sanity";
 
 function formatDate(date) {
   if (!date) return "Sem data";
@@ -92,7 +92,7 @@ function Post() {
           <h1>{post.title}</h1>
 
           <div className="article-body">
-            <PortableText value={post.body} />
+            <PortableText value={post.body} components={portableTextComponents} />
           </div>
         </article>
       </main>
@@ -101,5 +101,39 @@ function Post() {
     </>
   );
 }
+
+const portableTextComponents = {
+  types: {
+    image: ({ value }) => {
+      if (!value?.asset?._ref) return null;
+
+      return (
+        <figure className="article-image">
+          <img
+            src={urlFor(value).width(1200).auto("format").url()}
+            alt={value.alt || "Imagem do post"}
+          />
+
+          {value.caption && <figcaption>{value.caption}</figcaption>}
+        </figure>
+      );
+    },
+  },
+
+  block: {
+    h2: ({ children }) => <h2 className="article-heading">{children}</h2>,
+    h3: ({ children }) => <h3 className="article-subheading">{children}</h3>,
+  },
+
+  marks: {
+    link: ({ children, value }) => {
+      return (
+        <a href={value.href} target="_blank" rel="noreferrer">
+          {children}
+        </a>
+      );
+    },
+  },
+};
 
 export default Post;

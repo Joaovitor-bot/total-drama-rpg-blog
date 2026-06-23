@@ -1,4 +1,5 @@
 import { createClient } from "@sanity/client";
+import imageUrlBuilder from "@sanity/image-url";
 
 export const client = createClient({
   projectId: "f5iwk3nd",
@@ -6,6 +7,12 @@ export const client = createClient({
   apiVersion: "2026-03-01",
   useCdn: true,
 });
+
+const builder = imageUrlBuilder(client);
+
+export function urlFor(source) {
+  return builder.image(source);
+}
 
 export const postsQuery = `
   *[_type == "post"] | order(publishedAt desc) {
