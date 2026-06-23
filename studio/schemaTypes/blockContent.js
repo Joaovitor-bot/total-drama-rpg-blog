@@ -1,53 +1,58 @@
 import {defineType, defineArrayMember} from 'sanity'
 
 /**
- * This is the schema definition for the rich text fields used for
- * for this blog studio. When you import it in schemas.js it can be
- * reused in other parts of the studio with:
- *  {
- *    name: 'someName',
- *    title: 'Some title',
- *    type: 'blockContent'
- *  }
+ * Esta é a definição do campo de texto rico usado nos posts do blog.
+ *
+ * Esse tipo de campo permite escrever textos completos dentro do Sanity,
+ * com parágrafos, títulos, listas, links, imagens e vídeos.
+ *
+ * Quando esse tipo for usado em outro arquivo, ele pode ser chamado assim:
+ *
+ * {
+ *   name: 'body',
+ *   title: 'Conteúdo do post',
+ *   type: 'blockContent'
+ * }
  */
 export default defineType({
-  title: 'Block Content',
+  title: 'Conteúdo do post',
   name: 'blockContent',
   type: 'array',
   of: [
     defineArrayMember({
-      title: 'Block',
+      title: 'Texto',
       type: 'block',
-      // Styles let you set what your user can mark up blocks with. These
-      // correspond with HTML tags, but you can set any title or value
-      // you want and decide how you want to deal with it where you want to
-      // use your content.
+
+      // Estilos disponíveis no editor de texto.
+      // Eles aparecem para quem estiver escrevendo o post no Sanity.
       styles: [
         {title: 'Normal', value: 'normal'},
-        {title: 'H1', value: 'h1'},
-        {title: 'H2', value: 'h2'},
-        {title: 'H3', value: 'h3'},
-        {title: 'H4', value: 'h4'},
-        {title: 'Quote', value: 'blockquote'},
+        {title: 'Título principal', value: 'h1'},
+        {title: 'Título grande', value: 'h2'},
+        {title: 'Subtítulo', value: 'h3'},
+        {title: 'Título menor', value: 'h4'},
+        {title: 'Citação', value: 'blockquote'},
       ],
-      lists: [{title: 'Bullet', value: 'bullet'}],
-      // Marks let you mark up inline text in the block editor.
+
+      // Tipos de lista disponíveis no texto.
+      lists: [{title: 'Lista com marcadores', value: 'bullet'}],
+
       marks: {
-        // Decorators usually describe a single property – e.g. a typographic
-        // preference or highlighting by editors.
+        // Opções de formatação do texto.
         decorators: [
-          {title: 'Strong', value: 'strong'},
-          {title: 'Emphasis', value: 'em'},
+          {title: 'Negrito', value: 'strong'},
+          {title: 'Itálico', value: 'em'},
         ],
-        // Annotations can be any object structure – e.g. a link or a footnote.
+
+        // Anotações extras, como links.
         annotations: [
           {
-            title: 'URL',
+            title: 'Link',
             name: 'link',
             type: 'object',
             fields: [
               {
-                title: 'URL',
+                title: 'Endereço do link',
                 name: 'href',
                 type: 'url',
               },
@@ -56,12 +61,18 @@ export default defineType({
         ],
       },
     }),
-    // You can add additional types here. Note that you can't use
-    // primitive types such as 'string' and 'number' in the same array
-    // as a block type.
+
+    // Permite colocar imagens no meio do texto do post.
     defineArrayMember({
       type: 'image',
+      title: 'Imagem',
       options: {hotspot: true},
+    }),
+
+    // Permite colocar vídeos do YouTube no meio do post.
+    defineArrayMember({
+      type: 'youtube',
+      title: 'Vídeo do YouTube',
     }),
   ],
 })
