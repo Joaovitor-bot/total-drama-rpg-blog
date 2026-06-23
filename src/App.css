@@ -572,9 +572,10 @@ code {
 .full-card img {
   width: 100%;
   display: block;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
+  aspect-ratio: 2 / 3;
+  object-fit: contain;
   object-position: top;
+  background: rgba(0, 0, 0, 0.22);
 }
 
 .card-info {

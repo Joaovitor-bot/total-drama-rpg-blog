@@ -76,4 +76,175 @@ export const participants = Array.from({ length: 24 }, (_, index) => {
   };
 });
 
+export const participantes = [
+  {
+    id: 1,
+    nome: "Aaliyah",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/aaliyah.png"
+  },
+  {
+    id: 2,
+    nome: "André",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/andre.png"
+  },
+  {
+    id: 3,
+    nome: "Arleguatixa",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/arleguatixa.png"
+  },
+  {
+    id: 4,
+    nome: "Bento Monteiro",
+    subtitulo: "O Sobrevivente do Interior",
+    status: "Em jogo",
+    imagem: "/bento.png"
+  },
+  {
+    id: 5,
+    nome: "Dimitri",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/dimitri.png"
+  },
+  {
+    id: 6,
+    nome: "Elisângela",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/elisangela.png"
+  },
+  {
+    id: 7,
+    nome: "Hikari",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/hikari.png"
+  },
+  {
+    id: 8,
+    nome: "Homero",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/homero.png"
+  },
+  {
+    id: 9,
+    nome: "Jule",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/jule.png"
+  },
+  {
+    id: 10,
+    nome: "Kaliandra",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/kaliandra.png"
+  },
+  {
+    id: 11,
+    nome: "Larys",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/larys.png"
+  },
+  {
+    id: 12,
+    nome: "Lívia",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/livia.png"
+  },
+  {
+    id: 13,
+    nome: "Love",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/love.png"
+  },
+  {
+    id: 14,
+    nome: "Marjorie",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/marjorie.png"
+  },
+  {
+    id: 15,
+    nome: "Mark",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/mark.png"
+  },
+  {
+    id: 16,
+    nome: "May",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/may.png"
+  },
+  {
+    id: 17,
+    nome: "Miss",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/miss.png"
+  },
+  {
+    id: 18,
+    nome: "Natte",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/natte.png"
+  },
+  {
+    id: 19,
+    nome: "Sexo",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/sexo.png"
+  },
+  {
+    id: 20,
+    nome: "Stella",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/stella.png"
+  },
+  {
+    id: 21,
+    nome: "Theo",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/theo.png"
+  },
+  {
+    id: 22,
+    nome: "Tiffany",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/tiffany.png"
+  },
+  {
+    id: 23,
+    nome: "Vovô",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/vovo.png"
+  },
+  {
+    id: 24,
+    nome: "Yara",
+    subtitulo: "Participante da temporada",
+    status: "Em jogo",
+    imagem: "/yara.png"
+  }
+];
+
 export const eliminated = [];
