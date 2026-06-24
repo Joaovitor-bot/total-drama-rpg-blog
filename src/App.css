@@ -1497,3 +1497,17 @@ blockquote {
   transform: none;
 }
 
+/* Ajuste de espaçamento do botão Google */
+
+.google-login-button {
+  margin-top: 14px;
+  margin-bottom: 30px;
+}
+
+.comments-header {
+  margin-bottom: 18px;
+}
+
+.comments-list {
+  margin-top: 10px;
+}
