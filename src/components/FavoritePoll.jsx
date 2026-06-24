@@ -220,7 +220,10 @@ function FavoritePoll() {
             <div className="poll-result-item" key={result.id}>
                 <div className="poll-result-info">
                 <span>{result.name}</span>
-                <strong>{percentage}%</strong>
+
+                <strong>
+                    {result.votes} {result.votes === 1 ? "voto" : "votos"} • {percentage}%
+                </strong>
                 </div>
 
                 <div className="poll-bar">
