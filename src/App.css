@@ -2370,3 +2370,206 @@ video {
     white-space: normal;
   }
 }
+
+/* =========================================================
+   HERO COM FOTO
+========================================================= */
+
+.hero-copy-with-image {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-main-image {
+  overflow: hidden;
+  margin: 4px 0 22px;
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  background: rgba(0, 0, 0, 0.18);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+}
+
+.hero-main-image img {
+  display: block;
+  width: 100%;
+  max-height: 440px;
+  object-fit: cover;
+}
+
+/* =========================================================
+   PAINEL AO VIVO NO LUGAR DO MURAL
+========================================================= */
+
+.live-camp-panel p {
+  line-height: 1.7;
+}
+
+.live-camp-box {
+  display: grid;
+  grid-template-columns: 72px 1fr;
+  gap: 16px;
+  align-items: center;
+  margin: 22px 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.live-camp-icon {
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  font-size: 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 209, 102, 0.24),
+    rgba(255, 49, 85, 0.28)
+  );
+  border: 1px solid var(--border);
+}
+
+.live-camp-box strong {
+  display: block;
+  margin-bottom: 6px;
+  color: #fff7ed;
+  font-size: 1rem;
+}
+
+.live-camp-box p {
+  margin: 0;
+  color: #ffd7bd;
+}
+
+.live-camp-panel ul {
+  margin: 18px 0 0;
+  padding-left: 20px;
+  color: #ffd7bd;
+  line-height: 1.8;
+}
+
+@media (max-width: 560px) {
+  .hero-main-image {
+    border-radius: 20px;
+  }
+
+  .hero-main-image img {
+    max-height: 300px;
+  }
+
+  .live-camp-box {
+    grid-template-columns: 1fr;
+    text-align: left;
+  }
+
+  .live-camp-icon {
+    width: 62px;
+    height: 62px;
+    border-radius: 18px;
+  }
+}
+
+/* =========================================================
+   HERO SEM CARD AO LADO
+========================================================= */
+
+.hero-single {
+  display: block;
+}
+
+.hero-single .hero-copy {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.hero-single .hero-main-image {
+  margin-top: 16px;
+}
+
+.hero-single .hero-main-image img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+/* =========================================================
+   AO VIVO DO ACAMPAMENTO NO LUGAR DO MURAL
+========================================================= */
+
+.live-camp-panel {
+  position: relative;
+}
+
+.live-camp-panel .camp-tag {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 24px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: #1f0a10;
+  background: #38d996;
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.live-camp-main {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.live-camp-main h2 {
+  margin: 0 0 8px;
+}
+
+.live-camp-main p {
+  margin: 0;
+  color: #ffd7bd;
+  line-height: 1.6;
+}
+
+.live-camp-icon {
+  display: grid;
+  place-items: center;
+  width: 76px;
+  height: 76px;
+  border: 1px solid rgba(255, 248, 232, 0.22);
+  border-radius: 24px;
+  font-size: 2rem;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 209, 102, 0.22),
+    rgba(255, 49, 85, 0.34)
+  );
+}
+
+.live-stats-grid {
+  margin-top: 18px;
+}
+
+@media (max-width: 760px) {
+  .hero-single .hero-copy {
+    max-width: 100%;
+  }
+
+  .hero-single .hero-main-image img {
+    max-height: 300px;
+  }
+
+  .live-camp-main {
+    grid-template-columns: 1fr;
+  }
+
+  .live-camp-icon {
+    width: 66px;
+    height: 66px;
+    border-radius: 20px;
+  }
+}

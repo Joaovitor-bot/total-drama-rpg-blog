@@ -113,15 +113,41 @@ function Home() {
         <div className="container two-columns">
           <FavoritePoll />
 
-          <div className="panel notice-panel">
-            <p className="eyebrow">Mural da produção</p>
-            <h2>Recados rápidos</h2>
+          <div className="panel live-camp-panel">
+            <span className="camp-tag">Ao vivo do acampamento</span>
 
-            <ul>
-              <li>Posts agora vêm direto do Sanity.</li>
-              <li>Arraso.</li>
-              <li>Você continua cuidando do visual pelo VS Code.</li>
-            </ul>
+            <div className="live-camp-main">
+              <div className="live-camp-icon">🎤</div>
+
+              <div>
+                <h2>Amber no comando</h2>
+                <p>
+                  A apresentadora está pronta para anunciar provas, tretas e reviravoltas.
+                </p>
+              </div>
+            </div>
+
+            <div className="stats-grid live-stats-grid">
+              <div className="stat">
+                <strong>24</strong>
+                <span>Participantes</span>
+              </div>
+
+              <div className="stat">
+                <strong>01</strong>
+                <span>Episódios</span>
+              </div>
+
+              <div className="stat">
+                <strong>00</strong>
+                <span>Eliminados</span>
+              </div>
+
+              <div className="stat">
+                <strong>Em votação</strong>
+                <span>Favoritos</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
