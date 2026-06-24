@@ -1511,3 +1511,500 @@ blockquote {
 .comments-list {
   margin-top: 10px;
 }
+
+/* =========================================================
+   RESPONSIVIDADE FINAL — DESKTOP, TABLET E CELULAR
+   Cole este bloco no FINAL do App.css
+========================================================= */
+
+/* Evita estouro horizontal geral */
+html,
+body,
+#root {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  text-rendering: optimizeLegibility;
+}
+
+img,
+iframe,
+video {
+  max-width: 100%;
+}
+
+/* Telas grandes */
+@media (min-width: 1200px) {
+  .container {
+    width: min(1180px, calc(100% - 56px));
+  }
+
+  .article-shell {
+    max-width: 940px;
+  }
+
+  .cards-grid,
+  .participants-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Notebook e tablet horizontal */
+@media (max-width: 1100px) {
+  .container {
+    width: min(100% - 36px, 1040px);
+  }
+
+  .navbar {
+    padding-inline: 28px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy h1,
+  .page-title h1,
+  .article-card h1 {
+    font-size: clamp(2.5rem, 8vw, 4.8rem);
+  }
+
+  .posts-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .post-card.featured {
+    grid-column: span 1;
+  }
+
+  .cards-grid,
+  .participants-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Tablet e celulares grandes */
+@media (max-width: 820px) {
+  .container {
+    width: min(100% - 28px, 760px);
+  }
+
+  .navbar {
+    position: sticky;
+    padding: 14px 18px;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 14px;
+  }
+
+  .brand {
+    justify-content: center;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: flex-start;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links a {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    font-size: 0.92rem;
+  }
+
+  .hero-section {
+    padding: 34px 0 28px;
+  }
+
+  .hero-copy,
+  .hero-card,
+  .panel,
+  .article-card,
+  .empty-state,
+  .comments-section {
+    border-radius: 24px;
+  }
+
+  .hero-copy {
+    padding: 32px 24px;
+  }
+
+  .hero-copy::after {
+    right: 10px;
+    bottom: -22px;
+    font-size: 110px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .button,
+  .read-more,
+  .back-link {
+    width: 100%;
+    text-align: center;
+  }
+
+  .host-card {
+    grid-template-columns: 72px 1fr;
+    gap: 14px;
+  }
+
+  .host-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 22px;
+  }
+
+  .two-columns,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .posts-grid,
+  .cards-grid,
+  .participants-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .page {
+    padding: 44px 18px;
+  }
+
+  .article-shell {
+    padding: 38px 0;
+  }
+
+  .article-card {
+    padding: 28px 22px;
+  }
+
+  .article-cover {
+    border-radius: 20px;
+  }
+
+  .article-cover img {
+    max-height: 360px;
+  }
+
+  .video-embed iframe {
+    border-radius: 18px;
+  }
+
+  .comments-section {
+    padding: 26px 22px;
+  }
+}
+
+/* Celular comum */
+@media (max-width: 560px) {
+  .container {
+    width: min(100% - 20px, 100%);
+  }
+
+  .navbar {
+    padding: 12px 12px;
+  }
+
+  .brand {
+    justify-content: flex-start;
+  }
+
+  .brand-icon,
+  .brand-mark {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+  }
+
+  .brand strong {
+    font-size: 0.92rem;
+  }
+
+  .brand small,
+  .brand span {
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+  }
+
+  .nav-links {
+    gap: 6px;
+    padding: 5px;
+  }
+
+  .nav-links a {
+    padding: 9px 12px;
+    font-size: 0.84rem;
+  }
+
+  .hero-copy {
+    padding: 28px 20px;
+  }
+
+  .hero-copy h1,
+  .page-title h1,
+  .article-card h1,
+  .page h1 {
+    font-size: clamp(2.15rem, 13vw, 3.2rem);
+    letter-spacing: -0.055em;
+  }
+
+  .hero-text,
+  .section-heading > p,
+  .page-description,
+  .panel p,
+  .article-body,
+  .comments-header p {
+    font-size: 0.96rem;
+    line-height: 1.65;
+  }
+
+  .section {
+    padding: 32px 0;
+  }
+
+  .section-heading h2,
+  .panel h2,
+  .footer h2,
+  .empty-state h2,
+  .comments-header h2 {
+    font-size: clamp(1.55rem, 8vw, 2.15rem);
+  }
+
+  .stats-grid,
+  .posts-grid,
+  .cards-grid,
+  .participants-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .post-image,
+  .post-image img,
+  .post-image span {
+    min-height: 190px;
+  }
+
+  .post-content {
+    padding: 18px;
+  }
+
+  .post-meta {
+    display: grid;
+    gap: 6px;
+    font-size: 0.68rem;
+  }
+
+  .full-card img {
+    aspect-ratio: auto;
+    max-height: none;
+  }
+
+  .card-info {
+    padding: 16px;
+  }
+
+  .page {
+    padding: 36px 14px;
+  }
+
+  .empty-state {
+    padding: 28px 18px;
+  }
+
+  .article-card {
+    padding: 22px 16px;
+  }
+
+  .article-card h1 {
+    word-break: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .article-body {
+    font-size: 0.98rem;
+  }
+
+  .article-heading {
+    font-size: 1.55rem;
+  }
+
+  .article-subheading {
+    font-size: 1.25rem;
+  }
+
+  .article-image img,
+  .video-embed iframe {
+    border-radius: 16px;
+  }
+
+  .footer {
+    margin-top: 32px;
+    padding: 26px 0;
+  }
+
+  .modal-content {
+    max-width: 96vw;
+  }
+
+  .modal-content img {
+    max-height: 76vh;
+  }
+
+  .modal-close {
+    width: 42px;
+    height: 42px;
+    top: 12px;
+    right: 12px;
+  }
+
+  .comments-section {
+    padding: 22px 16px;
+  }
+
+  .google-login-button {
+    width: 100%;
+    margin-top: 18px;
+    margin-bottom: 26px;
+  }
+
+  .comment-user-box {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .comment-user-info {
+    align-items: center;
+  }
+
+  .logout-button {
+    width: 100%;
+  }
+
+  .comment-form-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .comment-form button {
+    width: 100%;
+  }
+
+  .comment-card {
+    padding: 15px;
+  }
+
+  .comment-card-top {
+    align-items: flex-start;
+  }
+
+  .comment-author {
+    max-width: calc(100% - 48px);
+  }
+
+  .comment-author strong,
+  .comment-user-info strong {
+    overflow-wrap: anywhere;
+  }
+
+  .comment-menu-dropdown {
+    right: 0;
+    min-width: 120px;
+  }
+
+  .comment-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .comment-actions button {
+    width: 100%;
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 380px) {
+  .container {
+    width: min(100% - 16px, 100%);
+  }
+
+  .navbar {
+    padding: 10px;
+  }
+
+  .nav-links a {
+    padding: 8px 10px;
+    font-size: 0.8rem;
+  }
+
+  .brand-icon,
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+  }
+
+  .hero-copy,
+  .hero-card,
+  .panel,
+  .article-card,
+  .comments-section {
+    border-radius: 20px;
+  }
+
+  .hero-copy h1,
+  .page h1,
+  .article-card h1 {
+    font-size: clamp(1.9rem, 14vw, 2.7rem);
+  }
+
+  .post-content,
+  .card-info,
+  .panel {
+    padding: 16px;
+  }
+
+  .comment-user-info img,
+  .comment-author img,
+  .comment-avatar-fallback {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Celular deitado */
+@media (max-height: 520px) and (orientation: landscape) {
+  .navbar {
+    position: relative;
+  }
+
+  .hero-section {
+    padding-top: 24px;
+  }
+
+  .modal-content img {
+    max-height: 68vh;
+  }
+}
+
+/* Acessibilidade: reduz animações para quem prefere menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
