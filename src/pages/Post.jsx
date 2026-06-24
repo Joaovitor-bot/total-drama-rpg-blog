@@ -180,7 +180,7 @@ function Post() {
           </div>
         </article>
 
-        <Comments />
+        <Comments postSlug={slug}/>
       </main>
 
       <Footer />
