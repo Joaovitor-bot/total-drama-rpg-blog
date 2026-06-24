@@ -22,6 +22,7 @@ function Comments({ postSlug }) {
   const [commentText, setCommentText] = useState("");
   const [comments, setComments] = useState([]);
   const [sending, setSending] = useState(false);
+  const [loginLoading, setLoginLoading] = useState(false);
 
   const [editingId, setEditingId] = useState(null);
   const [editingText, setEditingText] = useState("");
@@ -54,13 +55,28 @@ function Comments({ postSlug }) {
   }, [postSlug]);
 
   async function handleLogin() {
-    try {
-      await signInWithPopup(auth, provider);
-    } catch (error) {
-      console.error("Erro ao entrar com Google:", error);
-      alert(`Erro ao entrar: ${error.code}`);
+  if (loginLoading) return;
+
+  setLoginLoading(true);
+
+  try {
+    await signInWithPopup(auth, provider);
+  } catch (error) {
+    console.error("Erro ao entrar com Google:", error);
+
+    if (error.code === "auth/cancelled-popup-request") {
+      return;
     }
+
+    if (error.code === "auth/popup-closed-by-user") {
+      return;
+    }
+
+    alert(`Erro ao entrar: ${error.code}`);
+  } finally {
+    setLoginLoading(false);
   }
+}
 
   async function handleLogout() {
     try {
@@ -169,8 +185,12 @@ function Comments({ postSlug }) {
       </div>
 
       {!user && (
-        <button className="google-login-button" onClick={handleLogin}>
-          Entrar com Google
+        <button
+          className="google-login-button"
+          onClick={handleLogin}
+          disabled={loginLoading}
+        >
+          {loginLoading ? "Abrindo Google..." : "Entrar com Google"}
         </button>
       )}
 
