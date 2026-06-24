@@ -25,6 +25,7 @@ function Comments({ postSlug }) {
 
   const [editingId, setEditingId] = useState(null);
   const [editingText, setEditingText] = useState("");
+  const [openMenuId, setOpenMenuId] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -113,6 +114,7 @@ function Comments({ postSlug }) {
   function startEditing(comment) {
     setEditingId(comment.id);
     setEditingText(comment.text);
+    setOpenMenuId(null);
   }
 
   function cancelEditing() {
@@ -151,6 +153,7 @@ function Comments({ postSlug }) {
     try {
       const commentRef = doc(db, "comments", postSlug, "items", commentId);
       await deleteDoc(commentRef);
+      setOpenMenuId(null);
     } catch (error) {
       console.error("Erro ao excluir comentário:", error);
       alert(`Erro ao excluir comentário: ${error.code}`);
@@ -176,7 +179,11 @@ function Comments({ postSlug }) {
           <div className="comment-user-box">
             <div className="comment-user-info">
               {user.photoURL ? (
-                <img src={user.photoURL} alt={user.displayName || "Usuário"} />
+                <img
+                  src={user.photoURL}
+                  alt={user.displayName || "Usuário"}
+                  referrerPolicy="no-referrer"
+                />
               ) : (
                 <div className="comment-avatar-fallback">
                   {(user.displayName || "U").charAt(0)}
@@ -225,19 +232,56 @@ function Comments({ postSlug }) {
 
             return (
               <article className="comment-card" key={comment.id}>
-                <div className="comment-author">
-                  {comment.userPhoto ? (
-                    <img src={comment.userPhoto} alt={comment.userName} />
-                  ) : (
-                    <div className="comment-avatar-fallback">
-                      {(comment.userName || "U").charAt(0)}
+                <div className="comment-card-top">
+                  <div className="comment-author">
+                    {comment.userPhoto ? (
+                      <img
+                        src={comment.userPhoto}
+                        alt={comment.userName}
+                        referrerPolicy="no-referrer"
+                      />
+                    ) : (
+                      <div className="comment-avatar-fallback">
+                        {(comment.userName || "U").charAt(0)}
+                      </div>
+                    )}
+
+                    <div>
+                      <strong>{comment.userName}</strong>
+                      {comment.editedAt && <span>Editado</span>}
+                    </div>
+                  </div>
+
+                  {isOwner && !isEditing && (
+                    <div className="comment-menu">
+                      <button
+                        className="comment-menu-button"
+                        onClick={() =>
+                          setOpenMenuId(
+                            openMenuId === comment.id ? null : comment.id
+                          )
+                        }
+                        aria-label="Abrir menu do comentário"
+                      >
+                        ⋯
+                      </button>
+
+                      {openMenuId === comment.id && (
+                        <div className="comment-menu-dropdown">
+                          <button onClick={() => startEditing(comment)}>
+                            Editar
+                          </button>
+
+                          <button
+                            className="danger"
+                            onClick={() => deleteComment(comment.id)}
+                          >
+                            Excluir
+                          </button>
+                        </div>
+                      )}
                     </div>
                   )}
-
-                  <div>
-                    <strong>{comment.userName}</strong>
-                    {comment.editedAt && <span>Editado</span>}
-                  </div>
                 </div>
 
                 {isEditing ? (
@@ -259,24 +303,7 @@ function Comments({ postSlug }) {
                     </div>
                   </div>
                 ) : (
-                  <>
-                    <p>{comment.text}</p>
-
-                    {isOwner && (
-                      <div className="comment-actions">
-                        <button onClick={() => startEditing(comment)}>
-                          Editar
-                        </button>
-
-                        <button
-                          className="danger"
-                          onClick={() => deleteComment(comment.id)}
-                        >
-                          Excluir
-                        </button>
-                      </div>
-                    )}
-                  </>
+                  <p>{comment.text}</p>
                 )}
               </article>
             );
