@@ -142,7 +142,7 @@ function Home() {
 
             <ul>
               <li>Posts agora vêm direto do Sanity.</li>
-              <li>Seu namorado pode publicar sem mexer no código.</li>
+              <li>arraso.</li>
               <li>Você continua cuidando do visual pelo VS Code.</li>
             </ul>
           </div>
