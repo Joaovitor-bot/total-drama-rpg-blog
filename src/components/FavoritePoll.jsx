@@ -18,6 +18,7 @@ function FavoritePoll() {
   const [selectedOption, setSelectedOption] = useState("");
   const [loadingVote, setLoadingVote] = useState(false);
   const [loginLoading, setLoginLoading] = useState(false);
+  const [showAllResults, setShowAllResults] = useState(false);
 
   const pollOptions = useMemo(() => {
     return participantes
@@ -88,7 +89,7 @@ function FavoritePoll() {
   }, [votes, pollOptions]);
 
   const totalVotes = votes.length;
-  const topResults = results.slice(0, 3);
+  const displayedResults = showAllResults ? results : results.slice(0, 3);
 
   async function handleLogin() {
     if (loginLoading) return null;
@@ -207,28 +208,38 @@ function FavoritePoll() {
 
       <div className="poll-results poll-results-compact">
         <div className="poll-results-header">
-          <strong>Top favoritos</strong>
-          <span>{totalVotes} voto(s)</span>
+            <strong>{showAllResults ? "Resultado geral" : "Top favoritos"}</strong>
+            <span>{totalVotes} voto(s)</span>
         </div>
 
-        {topResults.map((result) => {
-          const percentage =
+        {displayedResults.map((result) => {
+            const percentage =
             totalVotes === 0 ? 0 : Math.round((result.votes / totalVotes) * 100);
 
-          return (
+            return (
             <div className="poll-result-item" key={result.id}>
-              <div className="poll-result-info">
+                <div className="poll-result-info">
                 <span>{result.name}</span>
                 <strong>{percentage}%</strong>
-              </div>
+                </div>
 
-              <div className="poll-bar">
+                <div className="poll-bar">
                 <i style={{ width: `${percentage}%` }}></i>
-              </div>
+                </div>
             </div>
-          );
+            );
         })}
-      </div>
+
+        {results.length > 3 && (
+            <button
+            type="button"
+            className="poll-toggle-results"
+            onClick={() => setShowAllResults((current) => !current)}
+            >
+            {showAllResults ? "Mostrar menos" : "Ver todos os participantes"}
+            </button>
+        )}
+        </div>
     </div>
   );
 }
