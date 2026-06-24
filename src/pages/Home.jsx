@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Footer from "../components/Footer";
+import FavoritePoll from "../components/FavoritePoll";
 import { client, postsQuery } from "../sanity";
 
 function formatDate(date) {
@@ -54,7 +55,7 @@ function Home() {
             <p className="eyebrow">Últimas atualizações</p>
             <h2>Notícias do acampamento</h2>
             <p>
-              Aqui aparecem os posts publicados no painel do Sanity. 
+              Aqui aparecem os posts publicados no painel do Sanity.
             </p>
           </div>
 
@@ -110,31 +111,7 @@ function Home() {
 
       <section className="section">
         <div className="container two-columns">
-          <div className="panel">
-            <p className="eyebrow">Enquete</p>
-            <h2>Quem é seu favorito?</h2>
-            <p>
-              Essa área depois pode virar votação real. Por enquanto, ela fica
-              como destaque visual da temporada.
-            </p>
-
-            <div className="fake-poll">
-              <span>Participante 01</span>
-              <div>
-                <i style={{ width: "72%" }}></i>
-              </div>
-
-              <span>Participante 08</span>
-              <div>
-                <i style={{ width: "51%" }}></i>
-              </div>
-
-              <span>Participante 15</span>
-              <div>
-                <i style={{ width: "36%" }}></i>
-              </div>
-            </div>
-          </div>
+          <FavoritePoll />
 
           <div className="panel notice-panel">
             <p className="eyebrow">Mural da produção</p>
@@ -142,7 +119,7 @@ function Home() {
 
             <ul>
               <li>Posts agora vêm direto do Sanity.</li>
-              <li>arraso.</li>
+              <li>Arraso.</li>
               <li>Você continua cuidando do visual pelo VS Code.</li>
             </ul>
           </div>
