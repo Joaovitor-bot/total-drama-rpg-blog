@@ -12,10 +12,22 @@ import { auth, db, provider } from "../firebase";
 
 const POLL_ID = "favoritos-temporada-1";
 
+function getVoteOptionIds(vote) {
+  if (Array.isArray(vote.optionIds)) {
+    return vote.optionIds.map(String);
+  }
+
+  if (vote.optionId) {
+    return [String(vote.optionId)];
+  }
+
+  return [];
+}
+
 function FavoritePoll() {
   const [user, setUser] = useState(null);
   const [votes, setVotes] = useState([]);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOptions, setSelectedOptions] = useState([]);
   const [loadingVote, setLoadingVote] = useState(false);
   const [loginLoading, setLoginLoading] = useState(false);
   const [showAllResults, setShowAllResults] = useState(false);
@@ -59,15 +71,10 @@ function FavoritePoll() {
   }, [votes, user]);
 
   useEffect(() => {
-  if (userVote?.optionId) {
-    setSelectedOption(userVote.optionId);
-    return;
-  }
-
-  if (pollOptions.length > 0) {
-    setSelectedOption((currentOption) => currentOption || pollOptions[0].id);
-  }
-  }, [userVote?.optionId, pollOptions]);
+    if (userVote) {
+      setSelectedOptions(getVoteOptionIds(userVote));
+    }
+  }, [userVote]);
 
   const results = useMemo(() => {
     const countMap = {};
@@ -80,16 +87,30 @@ function FavoritePoll() {
     });
 
     votes.forEach((vote) => {
-      if (countMap[vote.optionId]) {
-        countMap[vote.optionId].votes += 1;
-      }
+      const optionIds = getVoteOptionIds(vote);
+
+      optionIds.forEach((optionId) => {
+        if (countMap[optionId]) {
+          countMap[optionId].votes += 1;
+        }
+      });
     });
 
     return Object.values(countMap).sort((a, b) => b.votes - a.votes);
   }, [votes, pollOptions]);
 
-  const totalVotes = votes.length;
-  const displayedResults = showAllResults ? results : results.slice(0, 3);
+  const totalVotes = results.reduce((total, option) => total + option.votes, 0);
+  const displayedResults = showAllResults ? results : results.slice(0, 5);
+
+  function toggleOption(optionId) {
+    setSelectedOptions((currentOptions) => {
+      if (currentOptions.includes(optionId)) {
+        return currentOptions.filter((id) => id !== optionId);
+      }
+
+      return [...currentOptions, optionId];
+    });
+  }
 
   async function handleLogin() {
     if (loginLoading) return null;
@@ -126,35 +147,28 @@ function FavoritePoll() {
       if (!currentUser) return;
     }
 
-    if (!selectedOption) {
-      alert("Escolha um participante para votar.");
+    if (selectedOptions.length === 0) {
+      alert("Escolha pelo menos um participante para votar.");
       return;
     }
 
-    const option = pollOptions.find((item) => item.id === selectedOption);
-
-    if (!option) {
-      alert("Participante inválido.");
-      return;
-    }
+    const selectedNames = pollOptions
+      .filter((option) => selectedOptions.includes(option.id))
+      .map((option) => option.name);
 
     setLoadingVote(true);
 
     try {
       const voteRef = doc(db, "polls", POLL_ID, "votes", currentUser.uid);
 
-      await setDoc(
-        voteRef,
-        {
-          userId: currentUser.uid,
-          userName: currentUser.displayName || "Usuário",
-          userPhoto: currentUser.photoURL || "",
-          optionId: option.id,
-          optionName: option.name,
-          updatedAt: serverTimestamp(),
-        },
-        { merge: true }
-      );
+      await setDoc(voteRef, {
+        userId: currentUser.uid,
+        userName: currentUser.displayName || "Usuário",
+        userPhoto: currentUser.photoURL || "",
+        optionIds: selectedOptions,
+        optionNames: selectedNames,
+        updatedAt: serverTimestamp(),
+      });
     } catch (error) {
       console.error("Erro ao votar:", error);
       alert(`Erro ao votar: ${error.code}`);
@@ -167,27 +181,39 @@ function FavoritePoll() {
     <div className="panel favorite-poll favorite-poll-compact">
       <p className="eyebrow">Enquete</p>
 
-      <h2>Quem é seu favorito?</h2>
+      <h2>Quem são seus favoritos?</h2>
 
       <p>
-        Escolha seu participante favorito da temporada. Cada conta Google pode
-        votar uma vez e atualizar o voto depois.
+        Escolha quantos participantes quiser. Cada conta Google pode atualizar
+        seus favoritos depois.
       </p>
 
       <form className="poll-form poll-form-compact" onSubmit={handleVote}>
-        <label htmlFor="favorite-select">Escolha seu favorito</label>
+        <div className="poll-options-header">
+          <span>Selecione seus favoritos</span>
+          <strong>{selectedOptions.length} selecionado(s)</strong>
+        </div>
 
-        <select
-          id="favorite-select"
-          value={selectedOption}
-          onChange={(event) => setSelectedOption(event.target.value)}
-        >
-          {pollOptions.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.name}
-            </option>
-          ))}
-        </select>
+        <div className="poll-options-list">
+          {pollOptions.map((option) => {
+            const checked = selectedOptions.includes(option.id);
+
+            return (
+              <label
+                className={`poll-option-card ${checked ? "selected" : ""}`}
+                key={option.id}
+              >
+                <input
+                  type="checkbox"
+                  checked={checked}
+                  onChange={() => toggleOption(option.id)}
+                />
+
+                <span>{option.name}</span>
+              </label>
+            );
+          })}
+        </div>
 
         <button type="submit" disabled={loadingVote || loginLoading}>
           {loadingVote
@@ -195,54 +221,58 @@ function FavoritePoll() {
             : loginLoading
               ? "Abrindo Google..."
               : userVote
-                ? "Atualizar voto"
+                ? "Atualizar favoritos"
                 : "Votar"}
         </button>
       </form>
 
       {userVote && (
         <div className="poll-current-vote">
-          Seu voto atual: <strong>{userVote.optionName}</strong>
+          Seus favoritos atuais:{" "}
+          <strong>
+            {getVoteOptionIds(userVote).length} participante(s)
+          </strong>
         </div>
       )}
 
       <div className="poll-results poll-results-compact">
         <div className="poll-results-header">
-            <strong>{showAllResults ? "Resultado geral" : "Top favoritos"}</strong>
-            <span>{totalVotes} voto(s)</span>
+          <strong>{showAllResults ? "Resultado geral" : "Top favoritos"}</strong>
+          <span>{totalVotes} voto(s)</span>
         </div>
 
         {displayedResults.map((result) => {
-            const percentage =
+          const percentage =
             totalVotes === 0 ? 0 : Math.round((result.votes / totalVotes) * 100);
 
-            return (
+          return (
             <div className="poll-result-item" key={result.id}>
-                <div className="poll-result-info">
+              <div className="poll-result-info">
                 <span>{result.name}</span>
 
                 <strong>
-                    {result.votes} {result.votes === 1 ? "voto" : "votos"} • {percentage}%
+                  {result.votes} {result.votes === 1 ? "voto" : "votos"} •{" "}
+                  {percentage}%
                 </strong>
-                </div>
+              </div>
 
-                <div className="poll-bar">
+              <div className="poll-bar">
                 <i style={{ width: `${percentage}%` }}></i>
-                </div>
+              </div>
             </div>
-            );
+          );
         })}
 
-        {results.length > 3 && (
-            <button
+        {results.length > 5 && (
+          <button
             type="button"
             className="poll-toggle-results"
             onClick={() => setShowAllResults((current) => !current)}
-            >
+          >
             {showAllResults ? "Mostrar menos" : "Ver todos os participantes"}
-            </button>
+          </button>
         )}
-        </div>
+      </div>
     </div>
   );
 }

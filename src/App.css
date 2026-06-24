@@ -2271,3 +2271,102 @@ video {
   border-color: rgba(255, 209, 102, 0.55);
   background: rgba(255, 255, 255, 0.12);
 }
+
+/* =========================================================
+   ENQUETE COM VÁRIOS FAVORITOS
+========================================================= */
+
+.poll-options-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.poll-options-header span {
+  color: #ffe7d1;
+  font-weight: 850;
+}
+
+.poll-options-header strong {
+  color: var(--yellow);
+  font-size: 0.88rem;
+  white-space: nowrap;
+}
+
+.poll-options-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  max-height: 230px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.poll-options-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.poll-options-list::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(255, 209, 102, 0.45);
+}
+
+.poll-option-card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 8px 10px;
+  border: 1px solid rgba(255, 248, 232, 0.16);
+  border-radius: 14px;
+  color: #ffe7d1;
+  background: rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  transition: 180ms ease;
+}
+
+.poll-option-card:hover {
+  border-color: rgba(255, 209, 102, 0.45);
+  background: rgba(255, 248, 232, 0.08);
+}
+
+.poll-option-card.selected {
+  border-color: rgba(255, 209, 102, 0.75);
+  color: #230a0f;
+  background: linear-gradient(135deg, var(--yellow), var(--orange));
+}
+
+.poll-option-card input {
+  accent-color: var(--orange);
+}
+
+.poll-option-card span {
+  font-size: 0.88rem;
+  font-weight: 850;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.poll-option-card.selected span {
+  color: #230a0f;
+}
+
+@media (max-width: 560px) {
+  .poll-options-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .poll-options-list {
+    grid-template-columns: 1fr;
+    max-height: 260px;
+  }
+
+  .poll-option-card span {
+    white-space: normal;
+  }
+}
