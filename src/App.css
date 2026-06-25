@@ -2692,3 +2692,244 @@ video {
   background: linear-gradient(135deg, #ff3155, #9f1239);
   box-shadow: 0 10px 24px rgba(255, 49, 85, 0.24);
 }
+
+/* =========================================================
+   PÁGINA DE ELIMINADOS
+========================================================= */
+
+.eliminated-page {
+  position: relative;
+}
+
+.page-header {
+  max-width: 900px;
+  margin: 0 auto 34px;
+  text-align: center;
+}
+
+.eliminated-grid {
+  display: grid;
+  gap: 24px;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.eliminated-card {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 24px;
+  align-items: stretch;
+  overflow: hidden;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 49, 85, 0.13),
+      rgba(0, 0, 0, 0.14)
+    ),
+    rgba(255, 255, 255, 0.06);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.24);
+}
+
+.eliminated-image {
+  overflow: hidden;
+  min-height: 270px;
+  border-radius: 22px;
+  background: rgba(0, 0, 0, 0.24);
+}
+
+.eliminated-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.68);
+}
+
+.eliminated-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+
+.eliminated-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.eliminated-topline > strong {
+  color: var(--yellow);
+  font-size: 1.05rem;
+  font-weight: 950;
+}
+
+.eliminated-info h2 {
+  margin: 0 0 8px;
+  color: #fff7ed;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+  line-height: 0.95;
+}
+
+.eliminated-subtitle {
+  margin: 0 0 22px;
+  color: rgba(255, 248, 232, 0.72);
+  font-size: 1rem;
+}
+
+.eliminated-details {
+  display: grid;
+  gap: 14px;
+}
+
+.eliminated-details div {
+  padding: 14px 16px;
+  border: 1px solid rgba(255, 248, 232, 0.14);
+  border-radius: 18px;
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.eliminated-details span {
+  display: block;
+  margin-bottom: 6px;
+  color: #ffd166;
+  font-size: 0.76rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.eliminated-details strong {
+  color: #fff7ed;
+}
+
+.eliminated-details p {
+  margin: 0;
+  color: #ffd7bd;
+  line-height: 1.6;
+}
+
+.eliminated-empty {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* Responsivo */
+@media (max-width: 760px) {
+  .eliminated-card {
+    grid-template-columns: 1fr;
+  }
+
+  .eliminated-image {
+    min-height: 360px;
+  }
+
+  .eliminated-topline {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .eliminated-card {
+    padding: 14px;
+    border-radius: 22px;
+  }
+
+  .eliminated-image {
+    min-height: 300px;
+    border-radius: 18px;
+  }
+
+  .eliminated-info h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* =========================================================
+   PÁGINA ELIMINADOS — VERSÃO SIMPLES
+========================================================= */
+
+.eliminated-simple-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 320px));
+  justify-content: center;
+  gap: 24px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.eliminated-simple-card {
+  overflow: hidden;
+  border: 1px solid rgba(255, 248, 232, 0.14);
+  border-radius: 28px;
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 49, 85, 0.12),
+      rgba(0, 0, 0, 0.18)
+    ),
+    rgba(255, 255, 255, 0.06);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.24);
+}
+
+.eliminated-simple-image {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+.eliminated-simple-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) brightness(0.7);
+}
+
+.eliminated-simple-info {
+  padding: 20px;
+  text-align: center;
+}
+
+.eliminated-simple-info .status-pill {
+  margin: 0 auto 14px;
+}
+
+.eliminated-simple-info h2 {
+  margin: 0 0 10px;
+  color: #fff7ed;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  line-height: 1;
+}
+
+.eliminated-position {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 14px;
+  border: 1px solid rgba(255, 209, 102, 0.26);
+  border-radius: 999px;
+  color: #ffd166;
+  background: rgba(255, 209, 102, 0.08);
+  font-size: 0.95rem;
+  font-weight: 950;
+}
+
+@media (max-width: 560px) {
+  .eliminated-simple-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eliminated-simple-card {
+    border-radius: 22px;
+  }
+
+  .eliminated-simple-info {
+    padding: 18px;
+  }
+}

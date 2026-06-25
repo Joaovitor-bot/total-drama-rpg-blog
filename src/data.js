@@ -82,168 +82,216 @@ export const participantes = [
     nome: "Aaliyah",
     subtitulo: "A Líder Resiliente",
     status: "Em jogo",
-    imagem: "/aaliyah.png"
+    imagem: "/aaliyah.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 2,
     nome: "Andre",
     subtitulo: "O Sedutor Midiático",
     status: "Em jogo",
-    imagem: "/andre.png"
+    imagem: "/andre.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 3,
     nome: "Arleguatixa",
     subtitulo: "A Alien SuperStar",
-    status: "Eliminado",
-    imagem: "/arleguatixa.png"
+    status: "Em jogo",
+    imagem: "/arleguatixa.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 4,
     nome: "Bento Monteiro",
     subtitulo: "O Sobrevivente do Interior",
     status: "Em jogo",
-    imagem: "/bento.png"
+    imagem: "/bento.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 5,
     nome: "Dimitri",
     subtitulo: "O Vilão Elegante",
     status: "Em jogo",
-    imagem: "/dimitri.png"
+    imagem: "/dimitri.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 6,
     nome: "Elisângela",
     subtitulo: "A Serva de Deus",
     status: "Em jogo",
-    imagem: "/elisangela.png"
+    imagem: "/elisangela.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 7,
     nome: "Hikari",
-    subtitulo: " A Anti-Heroína",
+    subtitulo: "A Anti-Heroína",
     status: "Em jogo",
-    imagem: "/hikari.png"
+    imagem: "/hikari.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 8,
     nome: "Homero",
     subtitulo: "O Estratégico",
     status: "Em jogo",
-    imagem: "/homero.png"
+    imagem: "/homero.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 9,
     nome: "Jule",
     subtitulo: "A Víbora Escarlate",
     status: "Em jogo",
-    imagem: "/jule.png"
+    imagem: "/jule.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 10,
     nome: "Kaliandra",
     subtitulo: "A Madame dos Vinhedos",
     status: "Em jogo",
-    imagem: "/kaliandra.png"
+    imagem: "/kaliandra.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 11,
     nome: "Larys",
     subtitulo: "O Inofensivo Manipulador",
     status: "Em jogo",
-    imagem: "/larys.png"
+    imagem: "/larys.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 12,
     nome: "Lívia",
     subtitulo: "A Musa Inteligente",
     status: "Em jogo",
-    imagem: "/livia.png"
+    imagem: "/livia.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 13,
     nome: "Love",
     subtitulo: "A Miss Instável",
     status: "Em jogo",
-    imagem: "/love.png"
+    imagem: "/love.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 14,
     nome: "Marjorie",
     subtitulo: "A Influencer Intuitiva",
     status: "Em jogo",
-    imagem: "/marjorie.png"
+    imagem: "/marjorie.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 15,
     nome: "Mark",
     subtitulo: "O Ator Sedutor",
     status: "Em jogo",
-    imagem: "/mark.png"
+    imagem: "/mark.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 16,
     nome: "May",
     subtitulo: "A Estrela Otimista",
     status: "Em jogo",
-    imagem: "/may.png"
+    imagem: "/may.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 17,
     nome: "Miss",
     subtitulo: "A Rebelde sem Filtro",
     status: "Em jogo",
-    imagem: "/miss.png"
+    imagem: "/miss.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 18,
     nome: "Natte",
     subtitulo: "O Herdeiro Manipulador",
     status: "Em jogo",
-    imagem: "/natte.png"
+    imagem: "/natte.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 19,
     nome: "Sexo",
     subtitulo: "O Atleta Sedutor",
     status: "Em jogo",
-    imagem: "/sexo.png"
+    imagem: "/sexo.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 20,
     nome: "Stella",
     subtitulo: "A Patricinha Rebelde",
     status: "Em jogo",
-    imagem: "/stella.png"
+    imagem: "/stella.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 21,
     nome: "Theo",
     subtitulo: "A Fórmula do Caos",
     status: "Em jogo",
-    imagem: "/theo.png"
+    imagem: "/theo.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 22,
     nome: "Tiffany",
     subtitulo: "A Patricinha Influenciadora",
     status: "Em jogo",
-    imagem: "/tiffany.png"
+    imagem: "/tiffany.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 23,
     nome: "Vovó",
     subtitulo: "A Vó Trambiqueira",
     status: "Em jogo",
-    imagem: "/vovo.png"
+    imagem: "/vovo.png",
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 24,
     nome: "Yara",
     subtitulo: "A Rainha do Xadrez",
     status: "Em jogo",
-    imagem: "/yara.png"
+    imagem: "/yara.png",
+    ordemEliminacao: null,
+    posicao: ""
   }
 ];
 
