@@ -32,9 +32,27 @@ function Footer() {
           <strong>Produção</strong>
 
           <p>
-            Projeto autoral inspirado no clima caótico, competitivo e dramático
-            dos realities de acampamento.
+            Temporada produzida por criadores apaixonados por reality,
+            estratégia, personagens caóticos e muito drama.
           </p>
+
+          <div className="producer-links">
+            <a
+              href="https://kovaze.com/user/Maris"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Produtor 1
+            </a>
+
+            <a
+              href="https://kovaze.com/user/akaliuchis"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Produtor 2
+            </a>
+          </div>
 
           <p className="footer-small">
             Season 1 • Enquetes, episódios e eliminações em atualização.

@@ -3117,3 +3117,45 @@ video {
     font-size: 1.25rem;
   }
 }
+
+/* =========================================================
+   LINKS DOS PRODUTORES NO FOOTER
+========================================================= */
+
+.producer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 0;
+}
+
+.producer-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: 9px 14px;
+  border: 1px solid rgba(255, 248, 232, 0.16);
+  border-radius: 999px;
+  color: #1f0a10;
+  background: linear-gradient(135deg, var(--yellow), var(--orange));
+  font-size: 0.86rem;
+  font-weight: 950;
+  text-decoration: none;
+  transition: 180ms ease;
+}
+
+.producer-links a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(255, 138, 31, 0.22);
+}
+
+@media (max-width: 560px) {
+  .producer-links {
+    flex-direction: column;
+  }
+
+  .producer-links a {
+    width: 100%;
+  }
+}
