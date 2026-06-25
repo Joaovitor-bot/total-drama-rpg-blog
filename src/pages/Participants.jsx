@@ -36,23 +36,38 @@ function Participants() {
         </p>
 
         <section className="cards-grid">
-          {participantes.map((participante) => (
-            <article className="full-card" key={participante.id}>
-              <button
-                className="participant-image-button"
-                onClick={() => setParticipanteAberto(participante)}
-                aria-label={`Abrir card de ${participante.nome}`}
-              >
-                <img src={participante.imagem} alt={participante.nome} />
-              </button>
+          {participantes.map((participante) => {
+            const eliminado =
+              participante.status?.toLowerCase() === "eliminado";
 
-              <div className="card-info">
-                <h2>{participante.nome}</h2>
-                <p>{participante.subtitulo}</p>
-                <span>{participante.status}</span>
-              </div>
-            </article>
-          ))}
+            return (
+              <article
+                className={`full-card ${eliminado ? "is-eliminated" : ""}`}
+                key={participante.id}
+              >
+                <button
+                  className="participant-image-button"
+                  onClick={() => setParticipanteAberto(participante)}
+                  aria-label={`Abrir card de ${participante.nome}`}
+                >
+                  <img src={participante.imagem} alt={participante.nome} />
+                </button>
+
+                <div className="card-info">
+                  <h2>{participante.nome}</h2>
+                  <p>{participante.subtitulo}</p>
+
+                  <span
+                    className={`status-pill ${
+                      eliminado ? "status-eliminated" : "status-playing"
+                    }`}
+                  >
+                    {eliminado ? "Eliminado" : "Em jogo"}
+                  </span>
+                </div>
+              </article>
+            );
+          })}
         </section>
       </main>
 
@@ -66,7 +81,10 @@ function Participants() {
             ×
           </button>
 
-          <div className="modal-content" onClick={(event) => event.stopPropagation()}>
+          <div
+            className="modal-content"
+            onClick={(event) => event.stopPropagation()}
+          >
             <img
               src={participanteAberto.imagem}
               alt={participanteAberto.nome}

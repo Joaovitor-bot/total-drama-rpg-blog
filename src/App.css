@@ -2648,3 +2648,47 @@ video {
     max-height: 260px;
   }
 }
+
+/* =========================================================
+   CARD DE PARTICIPANTE ELIMINADO
+========================================================= */
+
+.full-card.is-eliminated {
+  position: relative;
+  opacity: 0.82;
+}
+
+.full-card.is-eliminated .participant-image-button img {
+  filter: grayscale(100%) brightness(0.68);
+}
+
+
+
+.full-card.is-eliminated .card-info h2,
+.full-card.is-eliminated .card-info p {
+  color: rgba(255, 248, 232, 0.68);
+}
+
+.status-pill {
+  display: inline-flex;
+  width: fit-content;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 950;
+  letter-spacing: 0.03em;
+}
+
+.status-pill.status-playing {
+  color: #1f0a10;
+  background: linear-gradient(135deg, var(--yellow), var(--orange));
+}
+
+.status-pill.status-eliminated {
+  color: #fff;
+  background: linear-gradient(135deg, #ff3155, #9f1239);
+  box-shadow: 0 10px 24px rgba(255, 49, 85, 0.24);
+}
