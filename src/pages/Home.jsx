@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Footer from "../components/Footer";
-import FavoritePoll from "../components/FavoritePoll";
 import { client, postsQuery } from "../sanity";
 
 function formatDate(date) {
@@ -110,10 +109,8 @@ function Home() {
       </section>
 
       <section className="section">
-        <div className="container two-columns">
-          <FavoritePoll />
-
-          <div className="panel live-camp-panel">
+        <div className="container">
+          <div className="panel live-camp-panel live-camp-panel-wide">
             <span className="camp-tag">Ao vivo do acampamento</span>
 
             <div className="live-camp-main">

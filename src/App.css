@@ -2573,3 +2573,78 @@ video {
     border-radius: 20px;
   }
 }
+
+/* =========================================================
+   HERO COM ENQUETE AO LADO
+========================================================= */
+
+.hero-with-poll {
+  align-items: stretch;
+  grid-template-columns: minmax(0, 1.45fr) minmax(360px, 0.85fr);
+}
+
+.hero-with-poll .hero-copy {
+  max-width: none;
+  margin: 0;
+}
+
+.hero-with-poll .hero-main-image {
+  margin-top: 18px;
+}
+
+.hero-with-poll .hero-main-image img {
+  width: 100%;
+  max-height: 405px;
+  object-fit: cover;
+  border-radius: 24px;
+}
+
+.hero-with-poll .favorite-poll {
+  height: 100%;
+}
+
+.hero-with-poll .favorite-poll-compact {
+  padding: clamp(22px, 2.8vw, 34px);
+}
+
+.hero-with-poll .favorite-poll-compact h2 {
+  font-size: clamp(2rem, 3vw, 3rem);
+}
+
+.hero-with-poll .poll-options-list {
+  max-height: 210px;
+}
+
+.hero-with-poll .poll-results-compact {
+  margin-top: 18px;
+}
+
+/* Painel ao vivo embaixo ocupando bem o espaço */
+.live-camp-panel-wide {
+  max-width: 100%;
+}
+
+/* Responsivo */
+@media (max-width: 1050px) {
+  .hero-with-poll {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-with-poll .favorite-poll {
+    height: auto;
+  }
+
+  .hero-with-poll .hero-main-image img {
+    max-height: 360px;
+  }
+}
+
+@media (max-width: 560px) {
+  .hero-with-poll .hero-main-image img {
+    max-height: 280px;
+  }
+
+  .hero-with-poll .poll-options-list {
+    max-height: 260px;
+  }
+}

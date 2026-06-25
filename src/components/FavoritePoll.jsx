@@ -184,7 +184,7 @@ function FavoritePoll() {
       <h2>Quem são seus favoritos?</h2>
 
       <p>
-        Escolha quantos participantes quiser. Cada conta Google pode atualizar
+        Escolha quantos participantes quiser. Pode atualizar
         seus favoritos depois.
       </p>
 

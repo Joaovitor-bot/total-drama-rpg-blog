@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import FavoritePoll from "./FavoritePoll";
 
 function Hero() {
   return (
     <section className="hero-section">
-      <div className="container hero-single">
+      <div className="container hero-grid hero-with-poll">
         <div className="hero-copy hero-copy-with-image">
           <p className="eyebrow">Blog oficial da temporada</p>
 
@@ -29,6 +30,8 @@ function Hero() {
             </Link>
           </div>
         </div>
+
+        <FavoritePoll />
       </div>
     </section>
   );
