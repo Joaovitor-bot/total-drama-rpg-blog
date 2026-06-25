@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import Footer from "../components/Footer";
 import { client, postsQuery } from "../sanity";
+import LiveCampPanel from "../components/LiveCampPanel";
 
 function formatDate(date) {
   if (!date) return "Sem data";
@@ -110,42 +111,7 @@ function Home() {
 
       <section className="section">
         <div className="container">
-          <div className="panel live-camp-panel live-camp-panel-wide">
-            <span className="camp-tag">Ao vivo do acampamento</span>
-
-            <div className="live-camp-main">
-              <div className="live-camp-icon">🎤</div>
-
-              <div>
-                <h2>Amber no comando</h2>
-                <p>
-                  A apresentadora está pronta para anunciar provas, tretas e reviravoltas.
-                </p>
-              </div>
-            </div>
-
-            <div className="stats-grid live-stats-grid">
-              <div className="stat">
-                <strong>24</strong>
-                <span>Participantes</span>
-              </div>
-
-              <div className="stat">
-                <strong>01</strong>
-                <span>Episódios</span>
-              </div>
-
-              <div className="stat">
-                <strong>00</strong>
-                <span>Eliminados</span>
-              </div>
-
-              <div className="stat">
-                <strong>Em votação</strong>
-                <span>Favoritos</span>
-              </div>
-            </div>
-          </div>
+          <LiveCampPanel posts={posts} />
         </div>
       </section>
 

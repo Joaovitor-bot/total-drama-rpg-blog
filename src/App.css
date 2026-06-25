@@ -3046,3 +3046,74 @@ video {
     flex-direction: column;
   }
 }
+
+/* =========================================================
+   AO VIVO DO ACAMPAMENTO — DADOS AUTOMÁTICOS
+========================================================= */
+
+.live-favorite-stat {
+  grid-column: span 2;
+}
+
+.live-favorite-stat strong {
+  max-width: 100%;
+  font-size: clamp(1.05rem, 2vw, 1.65rem);
+  line-height: 1.15;
+  word-break: break-word;
+}
+
+.live-favorite-stat span {
+  margin-top: 8px;
+}
+
+.live-updated-note {
+  margin: 18px 0 0;
+  color: rgba(255, 248, 232, 0.58);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 560px) {
+  .live-favorite-stat {
+    grid-column: span 1;
+  }
+
+  .live-favorite-stat strong {
+    font-size: 1.05rem;
+  }
+}
+
+/* =========================================================
+   AO VIVO — FAVORITO NO QUADRADO NORMAL
+========================================================= */
+
+.live-favorite-stat {
+  grid-column: auto !important;
+}
+
+.live-favorite-stat strong {
+  font-size: clamp(1.15rem, 2vw, 1.7rem);
+  line-height: 1.1;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+.live-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.live-stats-grid .stat {
+  min-height: 88px;
+}
+
+@media (max-width: 560px) {
+  .live-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .live-favorite-stat strong {
+    font-size: 1.25rem;
+  }
+}
