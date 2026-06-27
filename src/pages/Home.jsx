@@ -55,7 +55,7 @@ function Home() {
             <p className="eyebrow">Últimas atualizações</p>
             <h2>Notícias do acampamento</h2>
             <p>
-              Aqui aparecem os posts publicados no painel do Sanity.
+              Aqui aparecem os posts publicados no painel.
             </p>
           </div>
 
