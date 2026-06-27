@@ -153,10 +153,10 @@ export const participantes = [
     id: 9,
     nome: "Jule",
     subtitulo: "A Víbora Escarlate",
-    status: "Eliminado",
+    status: "Em jogo",
     imagem: "/jule.png",
-    ordemEliminacao: 1,
-    posicao: "24º"
+    ordemEliminacao: null,
+    posicao: ""
   },
   {
     id: 10,
