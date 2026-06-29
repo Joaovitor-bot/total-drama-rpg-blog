@@ -180,10 +180,10 @@ export const participantes = [
     id: 12,
     nome: "Lívia",
     subtitulo: "A Musa Inteligente",
-    status: "Em jogo",
+    status: "Eliminado",
     imagem: "/livia.png",
-    ordemEliminacao: null,
-    posicao: ""
+    ordemEliminacao: 2,
+    posicao: "23º"
   },
   {
     id: 13,
