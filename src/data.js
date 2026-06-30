@@ -90,10 +90,10 @@ export const participantes = [
     id: 2,
     nome: "Andre",
     subtitulo: "O Sedutor Midiático",
-    status: "Em jogo",
+    status: "Eliminado",
     imagem: "/andre.png",
-    ordemEliminacao: null,
-    posicao: ""
+    ordemEliminacao: 3,
+    posicao: "22º"
   },
   {
     id: 3,
@@ -135,10 +135,10 @@ export const participantes = [
     id: 7,
     nome: "Hikari",
     subtitulo: "A Anti-Heroína",
-    status: "Em jogo",
+    status: "Eliminado",
     imagem: "/hikari.png",
-    ordemEliminacao: null,
-    posicao: ""
+    ordemEliminacao: 4,
+    posicao: "21º"
   },
   {
     id: 8,
